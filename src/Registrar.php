@@ -61,13 +61,17 @@ class Registrar
         return $this;
     }
 
-    public function root()
+    public function root(): Registrar
     {
         $this->model->update(['root' => true]);
+
+        return $this;
     }
 
-    public function permissions(callable $callback)
+    public function permissions(callable $callback): Registrar
     {
         $callback(new PermissionManager($this->model));
+
+        return $this;
     }
 }
