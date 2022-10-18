@@ -19,7 +19,7 @@ class PermissionManager
      *
      * @var array
      */
-    private array $slugs;
+    private array $slugs = [];
 
     /**
      * Undocumented function
@@ -49,7 +49,7 @@ class PermissionManager
      */
     private function getPermissionsIds(): array
     {
-        return Permission::whereIn('slug', $this->slugs)->pluck('id')->toArray();
+        return array_filter(Permission::whereIn('slug', $this->slugs)->pluck('id')->toArray());
     }
 
     /**
