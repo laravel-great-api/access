@@ -47,6 +47,6 @@ trait HasRoles
     {
         $role = is_string($role) ? Role::where('slug', $role)->first() : $role;
 
-        return $this->roles()->syncWithoutDetaching($role->id);
+        return $this->roles()->sync($role->id);
     }
 }
