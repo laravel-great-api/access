@@ -51,7 +51,7 @@ trait HasPermissions
      */
     public function hasUserPermissions(string|array $permissions): bool
     {
-        return $this->whereHas('permissions', fn($q) => $q->whereIn('slug', $this->getArgs($permissions)))->exists();
+        return $this->permissions()->whereIn('slug', $this->getArgs($permissions))->exists();
     }
 
     /**

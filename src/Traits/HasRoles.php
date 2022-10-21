@@ -24,7 +24,7 @@ trait HasRoles
      */
     public function hasRole(string|array $roles): bool
     {
-        return $this->whereHas('roles', fn($q) => $q->whereIn('slug', $this->getArgs($roles)))->exists();
+        return $this->roles()->whereIn('slug', $this->getArgs($roles))->exists();
     }
 
     /**
